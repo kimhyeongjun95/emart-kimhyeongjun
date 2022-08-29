@@ -1,27 +1,43 @@
 import { useState, useEffect } from "react";
+import { request } from '../../api/api'
 
 function MainPage() {
-    const [product, setProduct] = useState([]);
+    const [datas, setDatas] = useState([]);
     
     const loadData = async () => {
         try {
-            const res = await fetch('http://localhost:8080/productList');
-            if (res.ok) {
-                const result = await res.json();
-                setProduct(result);
-                return;
-            }
-            throw new Error('데이터를 불러오지 못했습니다!');
+            const res = await request('http://localhost:8080/productList');
+            const result = organizeData(res)
+            setDatas(result);
+            return;
         } catch (e) {
             console.warn(e);
         }
     }
 
+    const organizeData = (response) => {
+        return response.map((element) => {
+            const organizedPrice = element.price.toLocaleString('en-US') + '원';
+            const organizedLikes = element.likes.toLocaleString('en-US');
+            const organizedComments = element.comments.toLocaleString('en-US');
+            return { ...element, 
+                price : organizedPrice,
+                likes: organizedLikes,
+                comments: organizedComments
+            };
+        })
+    }
+
     const showProduct = () => {
-        return product.map((item) => {
+        return datas.map((item) => {
             return (
                 <div key={item.id}>
-                    <span>{item.name}</span>
+                    <img src={item.image} alt={`${item.id}+'img`} />
+                    <span>{item.price}</span>
+                    <p>{item.name}</p>
+                    <span>{item.likes}</span>
+                    <span>{item.comments}</span>
+                    <hr />
                 </div>
             )
         })

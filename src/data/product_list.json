@@ -5,7 +5,8 @@
             "price": 13584,
             "name": "자연주의 유기농 참기름/볶음참깨",
             "likes": 504,
-            "comments": 36
+            "comments": 36,
+            "image": "https://stimg.emart.com/upload/onlineleaflet/220818/8809617945344.png"
         },
         {
             "id": 2,
@@ -16,8 +17,8 @@
         },
         {
             "id": 3,
-            "name": "영광 참굴비",
             "price": 19900,
+            "name": "영광 참굴비",
             "likes": 134,
             "comments": 1790
         },
