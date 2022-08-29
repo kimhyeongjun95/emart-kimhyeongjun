@@ -1,0 +1,116 @@
+{
+    "productList": [
+        {
+            "id": 1,
+            "price": 13584,
+            "name": "자연주의 유기농 참기름/볶음참깨",
+            "likes": 504,
+            "comments": 36
+        },
+        {
+            "id": 2,
+            "price": 11235,
+            "name": "광어 세꼬시회",
+            "likes": 364,
+            "comments": 467
+        },
+        {
+            "id": 3,
+            "name": "영광 참굴비",
+            "price": 19900,
+            "likes": 134,
+            "comments": 1790
+        },
+        {
+            "id": 4,
+            "price": 24900,
+            "name": "영광 참굴비",
+            "likes": 121,
+            "comments": 108
+        },
+        {
+            "id": 5,
+            "price": 31984,
+            "name": "손질 제주 은갈치",
+            "likes": 194,
+            "comments": 10
+        },
+        {
+            "id": 6,
+            "price": 7686,
+            "name": "손질 바지락",
+            "likes": 194,
+            "comments": 2093
+        },
+        {
+            "id": 7,
+            "price": 2400,
+            "name": "국산 생새우",
+            "likes": 194,
+            "comments": 1031
+        },
+        {
+            "id": 8,
+            "price": 10384,
+            "name": "곱창김",
+            "likes": 307,
+            "comments": 162
+        },
+        {
+            "id": 9,
+            "price": 12784,
+            "name": "볶음 조림 멸치",
+            "likes": 196,
+            "comments": 185
+        },
+        {
+            "id": 10,
+            "price": 4186,
+            "name": "러시아산 손질 동태",
+            "likes": 134,
+            "comments": 1020
+        },
+        {
+            "id": 11,
+            "price": 9800,
+            "name": "바이오 퍼블릭 갱년기케어",
+            "likes": 194,
+            "comments": 1031
+        },
+        {
+            "id": 12,
+            "price": 849000,
+            "name": "삼성 노트북",
+            "likes": 32,
+            "comments": 6
+        },
+        {
+            "id": 13,
+            "price": 1999000,
+            "name": "LG gram 16",
+            "likes": 28,
+            "comments": 5
+        },
+        {
+            "id": 14,
+            "price": 399000,
+            "name": "LG gram +view",
+            "likes": 28,
+            "comments": 5
+        },
+        {
+            "id": 15,
+            "price": 48900,
+            "name": "캐논 복합기",
+            "likes": 69,
+            "comments": 47
+        },
+        {
+            "id": 16,
+            "price": 24900,
+            "name": "로지텍 무선 콤보",
+            "likes": 41,
+            "comments": 9
+        }
+    ]
+}
