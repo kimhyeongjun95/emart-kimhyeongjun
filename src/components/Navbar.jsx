@@ -1,19 +1,45 @@
-function Navbar() {
+import styles from './Navbar.module.css';
+import { useState } from 'react';
+
+function Navbar({handleFilterProduct}) {
+    const [currentMenu, setCurrentMenu] = useState(0);
+    
+    const menuArr = [
+        { name: '전체' },
+        { name: '가공' },
+        { name: '신선' },
+        { name: '대한민국수산대전' },
+        { name: '시니어 WEEK' },
+        { name: '마음은 가볍게 준비는 완벽히' },
+        { name: 'SUMMER 클e어런스' },
+        { name: '금주의 초특가 찬스' },
+    ]
+
+    const handleMenu = (idx) => {
+        setCurrentMenu(() => idx);
+        handleFilterProduct(menuArr[idx].name);
+    }
+
     return(
         <>
             <h2>금주의 전단 상품 광고를 만나보세요</h2>
-            <div>
-                <span>전체</span>
-                <span>가공</span>
-                <span>신선</span>
-                <span>대한민국수산대전</span>
-                <span>시니어 WEEK</span>
-                <span>마음은 가볍게 준비는 완벽히</span>
-                <span>SUMMER 클e어런스</span>
-                <span>금주의 초특가 찬스</span>
+            <div className={styles.Navbar} >
+                {menuArr.map((ele, idx) => {
+                    return (
+                        <li 
+                            key={idx}
+                            className={currentMenu === idx ?  `${styles.subMenu} ${styles.selected}` : `${styles.subMenu}` }
+                            onClick={() => handleMenu(idx)}
+                        >
+                            {ele.name}
+                        </li>
+                    )
+                })}
             </div>
         </>
     )
 }
 
 export default Navbar;
+
+
