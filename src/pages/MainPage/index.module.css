@@ -1,8 +1,27 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1080px) {
+    .main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .box {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     padding: 0 20px;
+    width: 350px;
 }
 
 .boxImg {

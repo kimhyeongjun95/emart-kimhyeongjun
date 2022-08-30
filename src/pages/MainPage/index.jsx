@@ -13,8 +13,8 @@ function MainPage() {
     const observerRef = useRef(null);
     const preventRef = useRef(true);
     const { showList, loadCount } = shows;
-    // const URL = "http://localhost:8080/productList";
-    const URL = "https://emart-kimhyeongjun.herokuapp.com/api/productList";
+    const URL = "http://localhost:8080/productList";
+    // const URL = "https://emart-kimhyeongjun.herokuapp.com/api/productList";
     
     const loadData = async () => {
         try {
@@ -107,7 +107,9 @@ function MainPage() {
     return (
         <>
             <Navbar handleFilterProduct={handleFilterProduct} />
-            {showProduct()}
+            <div className={styles.main}>
+                {showProduct()}
+            </div>
             {loadCount <= 30 && <h1 ref={observerRef}>더보기</h1>}
         </>
     );
