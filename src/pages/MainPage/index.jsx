@@ -14,7 +14,7 @@ function MainPage() {
     const preventRef = useRef(true);
     const { showList, loadCount } = shows;
     // const URL = "http://localhost:8080/productList";
-    const URL = "https://emart-kimhyeongjun.herokuapp.com/api/requests";
+    const URL = "https://emart-kimhyeongjun.herokuapp.com/api/productList";
     
     const loadData = async () => {
         try {
