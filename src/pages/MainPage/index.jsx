@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar.jsx";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { request } from '../../api/api'
-import styles from './index.module.css';
+import styles from './index.module.css'
 
 function MainPage() {
     const [data, setData] = useState([]);
@@ -42,9 +42,9 @@ function MainPage() {
     }
 
     const showProduct = () => {
-        return showList.map((item) => {
+        return showList.map((item, idx) => {
             return (
-                <div key={item.id} className={styles.box}>
+                <div key={idx} className={styles.box}>
                     <div className={styles.boxImg}>
                         <img 
                             src={item.image ? item.image :"https://stimg.emart.com/upload/onlineleaflet/220818/2000001420751.png"} 
@@ -66,13 +66,30 @@ function MainPage() {
     }
 
     const handleLoadMore = useCallback(async(datas) => {
-        if (loadCount > 30) return;
-        let sliced = datas.slice(loadCount, loadCount + 10);
+        if (loadCount > 50) return;
+        let sliced = datas.slice(0, loadCount + 10);
         setShows((shows) => ({...shows, loadCount: loadCount + 10 }));
-        setShows((shows) => ({...shows, showList: [...showList, ...sliced] }));
+        setShows((shows) => ({...shows, showList: sliced }));
         preventRef.current = true;
     }, [page])
 
+    
+    const handleFilterProduct = async (name) => {
+        try {
+            const res = await request(URL);
+            let result = organizeData(res)
+            if (name === '전체') {
+                setShows(() => ({ loadCount: 0, showList: result }));
+                return;
+            };
+            result = result.filter(item => item.category === name);
+            setData(() => result);
+            setShows(() => ({ loadCount: 0, showList: result }));
+        } catch (e) {
+            console.warn(e);
+        }
+    }
+    
     const handleIntersect = (entry) => {
         const target = entry[0];
         if (target.isIntersecting && preventRef.current) {
@@ -81,23 +98,13 @@ function MainPage() {
         }
     }
 
-    const handleFilterProduct = (name) => {
-        if (name === '전체') {
-            setShows((shows) => ({...shows, showList: data }));
-            return;
-        };
-        let temp = [...data];
-        let result = temp.filter(item => item.category === name);
-        setShows((shows) => ({...shows, showList: result}));
-    }
-
     useEffect(() => {
         handleLoadMore(data);        
     }, [page])
 
     useEffect(() => {
         loadData();
-        const observer = new IntersectionObserver(handleIntersect, { threshold: 0.5});
+        const observer = new IntersectionObserver(handleIntersect, { threshold: 1.0 });
         if (observerRef.current) observer.observe(observerRef.current)
         return () => {
             observer.disconnect();
@@ -110,7 +117,8 @@ function MainPage() {
             <div className={styles.main}>
                 {showProduct()}
             </div>
-            {loadCount <= 30 && <h1 ref={observerRef}>더보기</h1>}
+            {loadCount <= 50 && <div ref={observerRef}></div>}
+            <br />
         </>
     );
 }

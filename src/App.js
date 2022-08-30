@@ -1,4 +1,5 @@
 import Routes from "./pages/Routes.jsx";
+import './app.css';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 
 .Navbar {
-    width: 100%;
+    max-width: 500px;
     padding-top: 48px;
     background-color: #fff;
     font-weight: bold;
@@ -16,6 +16,7 @@
     color: #767676;
     padding: 15px 10px;
     cursor: pointer;
+    text-align: center;
 }
 
 .selected {

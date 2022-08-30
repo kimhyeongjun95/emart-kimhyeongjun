@@ -1,5 +1,6 @@
 import styles from './Navbar.module.css';
 import { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 function Navbar({handleFilterProduct}) {
     const [currentMenu, setCurrentMenu] = useState(0);
@@ -23,19 +24,26 @@ function Navbar({handleFilterProduct}) {
     return(
         <>
             <h2>금주의 전단 상품 광고를 만나보세요</h2>
-            <div className={styles.Navbar} >
+            <Swiper
+                className={styles.Navbar}
+                slidesPerView={3}
+                spaceBetween={2}
+                initialSlide={1}
+                centeredSlides={true}
+                scrollbar={{ draggable: true, dragSize: 24 }}
+            >
                 {menuArr.map((ele, idx) => {
                     return (
-                        <li 
+                        <SwiperSlide 
                             key={idx}
                             className={currentMenu === idx ?  `${styles.subMenu} ${styles.selected}` : `${styles.subMenu}` }
                             onClick={() => handleMenu(idx)}
                         >
                             {ele.name}
-                        </li>
+                        </SwiperSlide>
                     )
                 })}
-            </div>
+            </Swiper>
         </>
     )
 }

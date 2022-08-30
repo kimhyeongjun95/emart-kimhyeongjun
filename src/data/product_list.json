@@ -219,6 +219,38 @@
             "likes": 50,
             "comments": 196,
             "category": "SUMMER 클e어런스"
+        },
+        {
+            "id": 28,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "가공"
+        },
+        {
+            "id": 29,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "가공"
+        },
+        {
+            "id": 30,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "가공"
+        },
+        {
+            "id": 31,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "가공"
         }
     ]
 }
