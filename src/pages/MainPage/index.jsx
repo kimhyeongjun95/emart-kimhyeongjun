@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar.jsx";
+import Navbar from "../../components/Navbar";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { request } from '../../api/api'
 import styles from './index.module.css'
@@ -11,7 +11,6 @@ function MainPage() {
         loadCount: 0,
     });
     const observerRef = useRef(null);
-    const preventRef = useRef(true);
     const { showList, loadCount } = shows;
     const URL = "http://localhost:8080/productList";
     // const URL = "https://emart-kimhyeongjun.herokuapp.com/api/productList";
@@ -70,12 +69,12 @@ function MainPage() {
         let sliced = datas.slice(0, loadCount + 10);
         setShows((shows) => ({...shows, loadCount: loadCount + 10 }));
         setShows((shows) => ({...shows, showList: sliced }));
-        preventRef.current = true;
     }, [page])
 
     
     const handleFilterProduct = async (name) => {
         try {
+            setPage(0);
             const res = await request(URL);
             let result = organizeData(res)
             if (name === '전체') {
@@ -92,10 +91,7 @@ function MainPage() {
     
     const handleIntersect = (entry) => {
         const target = entry[0];
-        if (target.isIntersecting && preventRef.current) {
-            preventRef.current = false;
-            setPage(page => page + 1);
-        }
+        if (target.isIntersecting) setPage(page => page + 1);
     }
 
     useEffect(() => {
@@ -104,7 +100,7 @@ function MainPage() {
 
     useEffect(() => {
         loadData();
-        const observer = new IntersectionObserver(handleIntersect, { threshold: 1.0 });
+        const observer = new IntersectionObserver(handleIntersect, { threshold: 0 });
         if (observerRef.current) observer.observe(observerRef.current)
         return () => {
             observer.disconnect();

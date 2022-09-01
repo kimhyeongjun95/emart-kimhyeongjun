@@ -1,9 +1,13 @@
-import styles from './Navbar.module.css';
-import { useState } from 'react';
+import styles from './navbar.module.css';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import backHome from '../../assets/backhome.png';
+import hamburger from '../../assets/hamburger.png';
 
 function Navbar({handleFilterProduct}) {
     const [currentMenu, setCurrentMenu] = useState(0);
+    const [visible, setVisible] = useState(false);
     
     const menuArr = [
         { name: '전체' },
@@ -21,11 +25,28 @@ function Navbar({handleFilterProduct}) {
         handleFilterProduct(menuArr[idx].name);
     }
 
+    const handleNav = () => {
+        if (window.scrollY > 100) setVisible(true);
+        else setVisible(false);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleNav);
+        return () => {
+            window.removeEventListener('scroll', handleNav);
+        }
+    }, [])
+
     return(
-        <>
-            <h2>금주의 전단 상품 광고를 만나보세요</h2>
+        <nav className={styles.navhead}>
+            <div className={styles.top}>
+                <img src={backHome} alt="backhome" className={styles.navimg}/>
+                <h2>금주의 전단 광고</h2>
+                <img src={hamburger} alt="hamburger" className={styles.navimg} />
+            </div>
+            <h2>금주의 전단 상품을 만나보세요</h2>
             <Swiper
-                className={styles.Navbar}
+                className={`${styles.navbar} ${visible && 'top-move'}`}
                 slidesPerView={3}
                 spaceBetween={2}
                 initialSlide={1}
@@ -44,7 +65,7 @@ function Navbar({handleFilterProduct}) {
                     )
                 })}
             </Swiper>
-        </>
+        </nav>
     )
 }
 

@@ -1,3 +1,18 @@
+.App {
+    max-width: 1200px;
+}
+
 .swiper-wrapper { 
     display: -webkit-inline-box 
+}
+
+.swiper {
+    position: relative;
+    overflow: hidden;
+}
+
+.top-move {
+    position: fixed;
+    z-index: 1;
+    top: 0;
 }
