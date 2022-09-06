@@ -251,6 +251,158 @@
             "likes": 1000,
             "comments": 4000,
             "category": "가공"
+        },
+        {
+            "id": 32,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "가공"
+        },
+        {
+            "id": 33,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 34,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 35,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 36,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 37,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 38,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 39,
+            "price": 10000,
+            "name": "예시용 상품",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "신선"
+        },
+        {
+            "id": 40,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 41,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 42,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 43,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 44,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 45,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 46,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 47,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 48,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 49,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "금주의 초특가 찬스"
+        },
+        {
+            "id": 50,
+            "price": 10000,
+            "name": "예시용 상품2",
+            "likes": 1000,
+            "comments": 4000,
+            "category": "SUMMER 클e어런스"
         }
     ]
 }

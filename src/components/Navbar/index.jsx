@@ -21,7 +21,7 @@ function Navbar({handleFilterProduct}) {
     ]
 
     const handleMenu = (idx) => {
-        setCurrentMenu(() => idx);
+        setCurrentMenu((index) => index = idx);
         handleFilterProduct(menuArr[idx].name);
     }
 

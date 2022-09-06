@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { request } from '../../api/api'
 import styles from './index.module.css'
 
@@ -14,40 +14,15 @@ function MainPage() {
     const { showList, loadCount } = shows;
     const URL = "http://localhost:8080/productList";
     // const URL = "https://emart-kimhyeongjun.herokuapp.com/api/productList";
-    
-    const loadData = async () => {
-        try {
-            const res = await request(URL);
-            const result = organizeData(res)
-            setData(result);
-            handleLoadMore(result);
-            return;
-        } catch (e) {
-            console.warn(e);
-        }
-    }
-
-    const organizeData = (response) => {
-        return response.map((element) => {
-            const organizedPrice = element.price.toLocaleString('en-US') + '원';
-            const organizedLikes = element.likes.toLocaleString('en-US');
-            const organizedComments = element.comments.toLocaleString('en-US');
-            return { ...element, 
-                price : organizedPrice,
-                likes: organizedLikes,
-                comments: organizedComments
-            };
-        })
-    }
 
     const showProduct = () => {
-        return showList.map((item, idx) => {
+        return showList.map((item) => {
             return (
-                <div key={idx} className={styles.box}>
+                <div key={item.id} className={styles.box}>
                     <div className={styles.boxImg}>
                         <img 
                             src={item.image ? item.image :"https://stimg.emart.com/upload/onlineleaflet/220818/2000001420751.png"} 
-                            alt={`${item.id}+'img`} 
+                            alt={`img${item.id}`}
                         />
                     </div>
                     <div className={styles.boxInfo}>
@@ -64,26 +39,30 @@ function MainPage() {
         })
     }
 
-    const handleLoadMore = useCallback(async(datas) => {
-        if (loadCount > 50) return;
-        let sliced = datas.slice(0, loadCount + 10);
-        setShows((shows) => ({...shows, loadCount: loadCount + 10 }));
-        setShows((shows) => ({...shows, showList: sliced }));
-    }, [page])
+    const organizeData = (response) => {
+        return response.map((element) => {
+            const organizedPrice = element.price.toLocaleString('en-US') + '원';
+            const organizedLikes = element.likes.toLocaleString('en-US');
+            const organizedComments = element.comments.toLocaleString('en-US');
+            return { ...element, 
+                price : organizedPrice,
+                likes: organizedLikes,
+                comments: organizedComments
+            };
+        })
+    }
 
-    
     const handleFilterProduct = async (name) => {
         try {
-            setPage(0);
+            setShows((shows) => ({...shows, loadCount: 10 }));
             const res = await request(URL);
             let result = organizeData(res)
             if (name === '전체') {
-                setShows(() => ({ loadCount: 0, showList: result }));
+                setData(result);
                 return;
             };
             result = result.filter(item => item.category === name);
-            setData(() => result);
-            setShows(() => ({ loadCount: 0, showList: result }));
+            setData(result);
         } catch (e) {
             console.warn(e);
         }
@@ -95,13 +74,29 @@ function MainPage() {
     }
 
     useEffect(() => {
-        handleLoadMore(data);        
-    }, [page])
+        const handleLoadMore = async (datas) => {
+            if (loadCount > 50) return;
+            if (data.length) {
+                const sliced = datas.slice(0, loadCount + 10);
+                setShows((shows) => ({...shows, showList: sliced, loadCount: loadCount + 10 }));
+            }
+        };
+        handleLoadMore(data); 
+    }, [page, data])
 
     useEffect(() => {
-        loadData();
         const observer = new IntersectionObserver(handleIntersect, { threshold: 0 });
-        if (observerRef.current) observer.observe(observerRef.current)
+        const loadData = async () => {
+            try {
+                const res = await request(URL);
+                const result = organizeData(res)
+                setData(result);
+                if (observerRef.current) observer.observe(observerRef.current);
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+        loadData();
         return () => {
             observer.disconnect();
         }
@@ -113,7 +108,7 @@ function MainPage() {
             <div className={styles.main}>
                 {showProduct()}
             </div>
-            {loadCount <= 50 && <div ref={observerRef}></div>}
+            {<div ref={observerRef}></div>}
             <br />
         </>
     );

@@ -24,9 +24,41 @@
 ```npm start```
 로 실행하시면 됩니다.
 
+# 폴더 구조
+```
+EMART-KIMHYEONGJUN
+├─── src
+	├── api
+        │ └── api.js // 서버 통신 api 함수
+	│
+	├── assets // 이미지 파일 저장 폴더
+	│
+	├── components
+        │	└── Navbar
+        │         ├── index.jsx // Navbar 컴포넌트 파일
+        │         └── navbar.module.css 
+	│
+	├── pages
+        │	└── MainPage
+        │         ├── index.jsx // 메인페이지 파일
+        │         └── index.module.css 
+	│
+	├── data
+        │	└── product_list.json // json data파일
+	│
+	├── App.js
+	├── App.css
+	└── index.js
+├─── data.json // heroku 배포 json-server 구동 용 서버 파일
+├─── package.json
+├─── package-lock.json
+├─── .gitignore
+├─── Procfile // heroku 배포 json-server 구동 용 서버 파일
+├─── server.js // heroku 배포 json-server 구동 용 서버 파일
+└─── README.md
+```
 
 # 구현 사항
-
 - 2022년 8월 29일 금주의 전단상품 화면를 바탕으로 과제를 진행했습니다.
   - <img src="https://user-images.githubusercontent.com/86656921/187228969-a65af6aa-1026-4a99-9951-68ff92ae81e0.png" style="zoom: 60%" />
   <br />
@@ -38,5 +70,7 @@
 - 메뉴 좌우 스크롤, 메뉴 클릭 시 데이터 필터링, 클릭된 메뉴 on/off 표시가 될 수 있도록 처리해주세요.
   - `react swiper` 라이브러리 활용하여 구현했습니다.
 - 스크롤 다운 메뉴 숨김 / 스크롤 업 메뉴를 표시해주세요.
+  - 일정 px이상 스크롤 다운할 시 메뉴 숨김이 활성화가 됩니다.
+  - 일정 px이상 스크롤 업 시 메뉴 숨김이 비활성화가 됩니다.
 - 화면 해상도에 따라 리스트 배열을 변경해주세요. (1열 → 2열, 2열 → 3열)
   - `@media`와 `grid` 레이아웃을 통해 화면 해상도에 따른 리스트 배열이 변경되도록 처리하였습니다.
